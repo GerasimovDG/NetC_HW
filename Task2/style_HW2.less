@@ -1,0 +1,122 @@
+@border-color: #3C4C71;
+@dropdowm-text-color: #5A5F80;
+@dropdowm-hover-color: #6378AE;
+
+@white-color: #fff;
+
+body{
+	text-align: center;
+	background-color: #77879C;
+}
+
+
+.button-dropdown{
+	display: flex;
+	position: absolute;
+	/*background-color: #B87474;*/
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	height: 165pt;
+	border-radius: 10pt;
+
+	overflow: hidden;
+	
+	& a{
+		text-decoration: none;
+		color: @dropdowm-text-color;
+	}
+
+	& i.fa{
+		position: absolute;
+		left: 20%;
+	}
+
+	& .button{
+		background-color: @white-color;
+
+		width: 150pt;
+		height: 45pt;
+		line-height: 45pt;
+		
+		text-transform: uppercase;
+		font-family: Arial, sans-serif;
+		font-size: 15pt;
+		color: @border-color;
+
+		border: 2pt solid @border-color;
+		border-radius: 10pt;
+
+		&:focus ~ .dropdown{
+			opacity: 1;
+			pointer-events: auto;
+			transition: 0.4s;
+		}
+	}
+
+	& .dropdown{
+		position: absolute;
+		list-style: none;
+		padding: 0;
+		
+		left: 50%;
+		transform: translate(-50%,0);
+
+		background-color: @white-color;
+		width: 150pt;
+		border: 2pt solid @border-color;
+		border-radius: 10pt;
+
+		opacity: 0;
+		pointer-events: none;
+		top: 30%;
+
+		z-index: -1;
+
+		& li{
+			position: relative;
+			margin: 2pt;
+			padding: 4pt 0;
+			text-transform: uppercase;
+			font-family: Arial, sans-serif;
+			
+		}
+
+		& li:first-of-type{
+			border-radius: 7pt 7pt 0 0;
+		}
+
+		& li:last-of-type{
+			border-radius: 0 0 7pt 7pt;
+		}
+
+
+		& li:hover,
+		& li:hover a{
+			background-color: @dropdowm-hover-color;
+			color: @white-color;
+		}
+
+		/*стрелочка*/
+		&:after{
+			content: "";
+			position: absolute;
+			border-width: 6pt;
+			border-style: solid;
+			border-color: transparent transparent @white-color transparent;
+			bottom: 100%;
+			right: 10%;
+		}
+
+		/*обводка стрелочки*/
+		&:before{
+			content: "";
+			position: absolute;
+			border-width: 9pt;
+			border-style: solid;
+			border-color: transparent transparent @border-color transparent;
+			bottom: 100%;
+			right: 8%;
+		}
+	}
+}
