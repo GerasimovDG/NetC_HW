@@ -13,15 +13,9 @@ body{
 
 .button-block{
 	display: flex;
-	position: absolute;
-	/*background-color: #B87474;*/
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
-	height: 165pt;
+	margin-top: 30pt;
 	border-radius: 10pt;
-
-	// overflow: hidden;
+	justify-content: center;
 
 	& a{
 		text-decoration: none;
@@ -48,13 +42,6 @@ body{
 		border: 2pt solid @border-color;
 		border-radius: 10pt;
 
-		// &:focus ~ .dropdown{
-		// 	opacity: 1;
-		// 	background-color: #43AA73;
-		// 	pointer-events: auto;
-
-		// 	transition: 0.4s;
-		// }
 		&:hover{
 			background-color: @dropdowm-hover-color;
 			color: @hover-text-color;
@@ -65,9 +52,7 @@ body{
 		position: absolute;
 		list-style: none;
 		padding: 0;
-		
-		left: 50%;
-		transform: translate(-50%,0);
+		margin-top: 60pt;
 
 		background-color: @hover-text-color;
 		width: 150pt;
@@ -76,9 +61,7 @@ body{
 
 		opacity: 0;
 		pointer-events: none;
-		top: 30%;
 
-		z-index: -1;
 		transition: 0.4s;
 
 		&_active{
