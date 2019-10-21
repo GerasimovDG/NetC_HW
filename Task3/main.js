@@ -2,11 +2,6 @@ function OpenMenu() {
 	 // document.getElementById("rrr").classList.toggle('active');
 	var drop = document.getElementsByClassName("dropdown");
 	drop[0].classList.toggle('dropdown_active');
-
-	// for(var i=0; i < drop.length; i++) { 
-	// 	drop[i].classList.toggle('active');
-	// }
-	// console.log(drop[0]);
 }
 
 function CloseMenu() {
@@ -15,6 +10,7 @@ function CloseMenu() {
 }
 
 
+// проверка нажатия -> изменение состояния active
 let btn;
 //this == window
 this.onclick = function(event) {
@@ -37,3 +33,11 @@ this.onclick = function(event) {
   	CloseMenu();
   }
 };
+
+// добавляем еще один пункт в dropdown
+let li = document.createElement('li');
+li.className = "dropdown__item";
+li.innerHTML = "<a href=\"#\">...</a>";
+
+let drop = document.getElementsByClassName("dropdown");
+drop[0].append(li);
