@@ -1,0 +1,130 @@
+
+body{
+	text-align: center;
+	background-color: #77879C;
+}
+
+
+.button-dropdown{
+	display: flex;
+	position: absolute;
+	background-color: #B87474;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	height: 200px;
+	border-radius: 10px;
+
+	overflow: hidden;
+
+}
+
+
+.button-dropdown  a{
+	/*display: flex;*/
+	text-decoration: none;
+	color: #5A5F80;
+	/*justify-content: center;*/
+}
+
+.button-dropdown a i.fa{
+	/*display: flex;*/
+	position: absolute;
+	left: 20%;
+}
+
+.button-dropdown .button{
+	/*display: flex;*/
+	/*position: relative;*/
+	background-color: #fff;
+  	/*justify-content: center;*/
+  	/*align-self: center;*/
+
+	width: 200px;
+	height: 60px;
+	line-height: 60px;
+	
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	font-size: 25px;
+	color: #3C4C71;
+
+	border: 3px solid #3C4C71;
+	border-radius: 10px;
+}
+
+.button-dropdown .dropdown{
+	position: absolute;
+	list-style: none;
+	/*margin: 10px auto;*/
+	padding: 0;
+	
+	left: 50%;
+	transform: translate(-50%,0);
+
+	background-color: #fff;
+	width: 200px;
+	border: 3px solid #3C4C71;
+	border-radius: 10px;
+
+	opacity: 0;
+	pointer-events: none;
+	top: 35%;
+
+	z-index: -1;
+}
+
+.button-dropdown .button:focus ~ .dropdown{
+	opacity: 1;
+	pointer-events: auto;
+	-moz-transition: 0.4s;
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+
+.button-dropdown .dropdown li{
+	position: relative;
+	margin: 2px;
+	padding: 5px 0;
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+	
+}
+
+.button-dropdown .dropdown li:first-of-type{
+	border-radius: 7px 7px 0 0;
+}
+
+.button-dropdown .dropdown li:last-of-type{
+	border-radius: 0 0 7px 7px;
+}
+
+
+.button-dropdown .dropdown li:hover,
+.button-dropdown .dropdown li:hover a{
+	background-color: #6378AE;
+	color: #fff;
+}
+
+/*стрелочка*/
+.button-dropdown .dropdown:after{
+	content: "";
+	position: absolute;
+	border-width: 6px;
+	border-style: solid;
+	border-color: transparent transparent #fff transparent;
+	bottom: 100%;
+	right: 20px;
+}
+
+/*обводка стрелочки*/
+.button-dropdown .dropdown:before{
+	content: "";
+	position: absolute;
+	border-width: 10px;
+	border-style: solid;
+	border-color: transparent transparent #3C4C71 transparent;
+	bottom: 100%;
+	right: 16px;
+}
