@@ -184,39 +184,53 @@ Human.prototype.run = function(){
 };
 
 
-function inherit(ParentClass) {
-  function ChildClass() {}
+function inherit(ParentClass,keyss) {
+  function ChildClass(...args) {
+    let tmp = Object.keys(keyss);
+
+    // сначала определяем параметры по умолчанию
+    for (var t in keyss){
+      this[t] = keyss[t];
+    }
+
+    // теперь переопределяем те, которые указаны в параметрах конструктора
+    let minParam = args.length > tmp.length ? tmp : args;
+    for (let i = 0; i < minParam.length; i++){
+      this[tmp[i]] = args[i];
+      
+    }
+
+  }
   ChildClass.prototype = Object.create(ParentClass.prototype);
   ChildClass.prototype.constructor = ChildClass;
   ChildClass.prototype._super = ParentClass.prototype;
 
   return ChildClass;
 }
-
-var Man = inherit(Human);
-// Man.prototype = {
-// 	init : function(name) {
-//         name = 'Mr. ' + name;
-//         this._super.init.call(this, name); // call super
-//     }
-// }; - не работает
-// Man.prototype.constructor = function(name, age,beard) {
-//   name = 'Mr. ' + name;
-//   this._super.constructor.call(this, name, age); // call super
-//   this.beard = beard;
-// };  - не работает
+var manKeys = {
+  name: 0,
+  age: 0,
+  beard: false
+}
+var Man = inherit(Human,manKeys);
 Man.prototype.init = function(name, age,beard) {
   name = 'Mr. ' + name;
   this._super.constructor.call(this, name, age); // call super
   this.beard = beard;
 }
 
-var he = new Man('Jack', 20, true);
-he.init('Jack', 20, true);
+var he = new Man('Jacky', 220, true);
+// var he = new Man();
+// he.init('Jack', 20, true);
 he.run();
 console.dir(he);
 
-var Woman = inherit(Human);
+var womanKeys = {
+  name: 0,
+  age: 0,
+  color: 'redhead'
+}
+var Woman = inherit(Human,womanKeys);
 Woman.prototype.init = function(name,age, color = 'redhead'){
   name = 'Ms. ' + name;
   this._super.constructor.call(this,name,age);
@@ -226,10 +240,10 @@ Woman.prototype.birthBaby = function(){
   console.log(`Я, ${this.name}, родила ребенка.`);
 }
 
-var she = new Woman();
-var jess = new Woman();
-she.init('Alisa',22, 'brunette');
-jess.init('Jess', 19);
+var she = new Woman('Alisa',22, 'brunette');
+var jess = new Woman('Jess', 19);
+// she.init('Alisa',22, 'brunette');
+// jess.init('Jess', 19);
 jess.run();
 she.birthBaby();
 console.dir(she);
